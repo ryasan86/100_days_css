@@ -36,7 +36,7 @@ Codepen.defaultProps = {
   height: '450px',
   width: '400px',
   tab: 'result',
-  theme: 'dark',
+  theme: 'light',
   user: 'ryasan86',
 };
 

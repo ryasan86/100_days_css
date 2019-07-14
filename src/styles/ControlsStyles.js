@@ -13,6 +13,7 @@ const StyledControls = styled.div`
     #282828 90%,
     #303030 100%
   );
+  background-image: linear-gradient(147deg, #002f4e 0%, #04619f 74%);
   color: white;
   position: relative;
   overflow: hidden;
