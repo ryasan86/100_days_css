@@ -4,15 +4,14 @@ const GlobalStyles = createGlobalStyle`
   *,
   *:before,
   *:after {
-    -webkit-box-sizing: border-box;
-    box-sizing: inherit;
+    box-sizing: border-box;
   }
-
+  
   body {
     padding: 0;
     margin: 0;
     font-size: 1.5rem;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Courier New', 'Courier', sans-serif;  
   }
 `;
 
@@ -21,19 +20,6 @@ const StyledApp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  .container {
-    width: 100%;
-    height: 100%;
-
-    &.project-container {
-      /* border-right */
-    }
-
-    &.controls-container {
-      background: lightgray;
-    }
-  }
 `;
 
 export { GlobalStyles };

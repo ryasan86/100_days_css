@@ -8,12 +8,8 @@ const App = () => {
   return (
     <StyledApp>
       <GlobalStyles />
-      <div className="container project-container">
-        <Project />
-      </div>
-      <div className="container controls-container">
-        <Controls />
-      </div>
+      <Project />
+      <Controls />
     </StyledApp>
   );
 };

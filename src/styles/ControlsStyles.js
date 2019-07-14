@@ -4,17 +4,23 @@ const scoopWidth = '150%';
 
 const StyledControls = styled.div`
   height: 100%;
+  width: 100%;
   background: linear-gradient(
-    135deg,
+    200deg,
     #101010 1%,
-    #1a1a1a 50%,
-    #242424 75%,
-    #2e2e2e 90%,
-    #393939 100%
+    #181818 50%,
+    #202020 75%,
+    #282828 90%,
+    #303030 100%
   );
   color: white;
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  z-index: -10;
 
   &:before {
     content: '';
@@ -25,6 +31,15 @@ const StyledControls = styled.div`
     border-radius: 50%;
     left: -130%;
     top: calc(-${scoopWidth} / 6);
+  }
+
+  .nav-controls {
+    margin-left: 200px;
+  }
+
+  .description-container {
+    max-width: 350px;
+    text-align: right;
   }
 `;
 
