@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import Project from './components/Project';
+import Controls from './components/Controls';
+import StyledApp, { GlobalStyles } from './styles/AppStyles';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <GlobalStyles />
+      <div className="container project-container">
+        <Project />
+      </div>
+      <div className="container controls-container">
+        <Controls />
+      </div>
+    </StyledApp>
   );
-}
+};
 
 export default App;
