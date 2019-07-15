@@ -1,16 +1,21 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-const GlobalStyles = createGlobalStyle`
+const GlobalStylesProvider = createGlobalStyle`
+  html {
+    box-sizing: border-box;
+    font-size: 10px;
+  }
+
   *,
   *:before,
   *:after {
-    box-sizing: border-box;
+    box-sizing: inherit;
   }
   
   body {
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'Courier New', 'Courier', sans-serif;  
   }
 `;
@@ -22,5 +27,5 @@ const StyledApp = styled.div`
   align-items: center;
 `;
 
-export { GlobalStyles };
+export { GlobalStylesProvider };
 export default StyledApp;

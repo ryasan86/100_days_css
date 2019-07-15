@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import qs from 'query-string';
+import PropTypes from 'prop-types';
 
 import { projects, LocalDataContext } from '../provider';
 import StyledControls from '../styles/ControlsStyles';
 import Title from './Title';
 
-const Controls = props => {
+const Controls = ({ history, location }) => {
   const [selectedIdx, setSelectedIdx] = useState(0);
   const { setSelectedProject } = useContext(LocalDataContext);
 
@@ -26,21 +26,29 @@ const Controls = props => {
   const handleChange = i => {
     setSelectedIdx(i);
     setSelectedProject({ project: projects[i] });
-    props.history.push(`/?day=${i + 1}`);
+    history.push(`/?day=${i + 1}`);
   };
 
   useEffect(() => {
-    const i = parseInt(qs.parse(props.location.search).day) - 1;
-    if (i >= 0 && i <= projects.length - 1) handleChange(i);
+    const params = new URLSearchParams(location.search);
+    const i = parseInt(params.get('day')) - 1;
+    handleChange(i);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <StyledControls>
       <Title />
-      <div className="nav-controls">
-        <button onClick={goPrev}>prev</button>
-        <button onClick={goNext}>next</button>
+      <div className="nav-container">
+        <button className="nav-btn prev-btn" onClick={goPrev}>
+          <i className="nav-btn__arrow left" />
+        </button>
+        <div className="nav-project-container">
+          <h3>{selectedIdx}</h3>
+        </div>
+        <button className="nav-btn next-btn" onClick={goNext}>
+          <i className="nav-btn__arrow right" />
+        </button>
       </div>
       <div className="description-container">
         <p>
@@ -50,6 +58,11 @@ const Controls = props => {
       </div>
     </StyledControls>
   );
+};
+
+Controls.propTypes = {
+  history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default withRouter(Controls);

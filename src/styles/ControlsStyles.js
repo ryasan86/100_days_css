@@ -33,8 +33,34 @@ const StyledControls = styled.div`
     top: calc(-${scoopWidth} / 6);
   }
 
-  .nav-controls {
+  .nav-container {
     margin-left: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .nav-btn {
+      margin: 0;
+      background: none;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+
+      .nav-btn__arrow {
+        border: solid white;
+        border-width: 0 0.4rem 0.4rem 0;
+        display: inline-block;
+        padding: 3px;
+        height: 3rem;
+        width: 3rem;
+        &.left {
+          transform: rotate(135deg);
+        }
+        &.right {
+          transform: rotate(-45deg);
+        }
+      }
+    }
   }
 
   .description-container {

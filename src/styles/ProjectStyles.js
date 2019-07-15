@@ -7,6 +7,10 @@ const StyledProject = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  p {
+    color: #075a97;
+  }
 `;
 
 export default StyledProject;
