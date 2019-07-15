@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 const scoopWidth = '150%';
 
@@ -33,39 +33,80 @@ const StyledControls = styled.div`
     top: calc(-${scoopWidth} / 6);
   }
 
-  .nav-container {
-    margin-left: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .nav-btn {
-      margin: 0;
-      background: none;
-      border: 0;
-      outline: 0;
-      cursor: pointer;
-
-      .nav-btn__arrow {
-        border: solid white;
-        border-width: 0 0.4rem 0.4rem 0;
-        display: inline-block;
-        padding: 3px;
-        height: 3rem;
-        width: 3rem;
-        &.left {
-          transform: rotate(135deg);
-        }
-        &.right {
-          transform: rotate(-45deg);
-        }
-      }
-    }
-  }
-
   .description-container {
     max-width: 350px;
   }
 `;
 
+const squishLeft = keyframes`
+  0% {
+    transform: rotate(135deg);
+  }
+  50% {
+    transform: rotate(150deg) skew(30deg);
+  }
+  100% {
+    transform: rotate(135deg);
+  }
+`;
+
+const squishRight = keyframes`
+  0% {
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(-35deg) skew(30deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+  }
+`;
+
+const squishLeftCSS = css`
+  animation: ${squishLeft} 0.5s ease-out;
+`;
+
+const squishRightCSS = css`
+  animation: ${squishRight} 0.5s ease-out;
+`;
+
+const NavStyles = styled.div`
+  margin-left: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .nav-btn {
+    margin: 0;
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+
+    .nav-btn__arrow {
+      border: solid white;
+      border-width: 0 0.4rem 0.4rem 0;
+      display: inline-block;
+      padding: 3px;
+      height: 3rem;
+      width: 3rem;
+
+      &.left {
+        transform: rotate(135deg);
+        ${props => props.left && squishLeftCSS};
+      }
+      &.right {
+        transform: rotate(-45deg);
+        ${props => props.right && squishRightCSS};
+      }
+    }
+  }
+
+  .project-title {
+    width: 23rem;
+    text-align: center;
+  }
+`;
+
+export { NavStyles };
 export default StyledControls;

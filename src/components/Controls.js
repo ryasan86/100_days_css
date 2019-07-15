@@ -1,24 +1,43 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useReducer, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { projects, LocalDataContext } from '../provider';
-import StyledControls from '../styles/ControlsStyles';
+import StyledControls, { NavStyles } from '../styles/ControlsStyles';
 import Title from './Title';
 
+const initialState = { left: false, right: false };
+
+const animationReducer = (state, action) => {
+  switch (action) {
+    case 'left':
+      return { left: true, right: false };
+    case 'right':
+      return { left: false, right: true };
+    default:
+      return initialState;
+  }
+};
+
 const Controls = ({ history, location }) => {
+  const { setSelectedProject, selectedProject } = useContext(LocalDataContext);
   const [selectedIdx, setSelectedIdx] = useState(0);
-  const { setSelectedProject } = useContext(LocalDataContext);
+  const [animateState, dispatchAnimate] = useReducer(
+    animationReducer,
+    initialState,
+  );
 
   // go to previous project
   const goPrev = () => {
     const i = selectedIdx <= 0 ? projects.length - 1 : selectedIdx - 1;
+    dispatchAnimate('left');
     handleChange(i);
   };
 
   // go to next project
   const goNext = () => {
     const i = selectedIdx >= projects.length - 1 ? 0 : selectedIdx + 1;
+    dispatchAnimate('right');
     handleChange(i);
   };
 
@@ -39,17 +58,21 @@ const Controls = ({ history, location }) => {
   return (
     <StyledControls>
       <Title />
-      <div className="nav-container">
-        <button className="nav-btn prev-btn" onClick={goPrev}>
+      <NavStyles {...animateState}>
+        <button
+          className="nav-btn prev-btn"
+          onClick={goPrev}
+          onAnimationEnd={dispatchAnimate}>
           <i className="nav-btn__arrow left" />
         </button>
-        <div className="nav-project-container">
-          <h3>{selectedIdx}</h3>
-        </div>
-        <button className="nav-btn next-btn" onClick={goNext}>
+        <h3 className="project-title">{selectedProject.project.title}</h3>
+        <button
+          className="nav-btn next-btn"
+          onClick={goNext}
+          onAnimationEnd={dispatchAnimate}>
           <i className="nav-btn__arrow right" />
         </button>
-      </div>
+      </NavStyles>
       <div className="description-container">
         <p>
           A a collection of 100 builds over the course of 100 days to strengthen
