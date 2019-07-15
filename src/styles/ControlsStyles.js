@@ -21,7 +21,6 @@ const StyledControls = styled.div`
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  z-index: -10;
 
   &:before {
     content: '';
@@ -40,7 +39,6 @@ const StyledControls = styled.div`
 
   .description-container {
     max-width: 350px;
-    text-align: right;
   }
 `;
 

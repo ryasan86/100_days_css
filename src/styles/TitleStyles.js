@@ -17,6 +17,7 @@ const StyledTitle = styled.div`
       background: white;
       box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.8);
       position: relative;
+      z-index: 2;
 
       &:before {
         content: '';
@@ -28,7 +29,6 @@ const StyledTitle = styled.div`
         left: -20px;
         border-radius: 5px;
         transform: rotate(50deg);
-        z-index: -1;
       }
     }
 
@@ -42,12 +42,11 @@ const StyledTitle = styled.div`
 
       &.zero-1 {
         right: 87px;
-        z-index: -1;
+        z-index: 1;
       }
 
       &.zero-2 {
         right: 0;
-        z-index: -2;
       }
     }
   }
