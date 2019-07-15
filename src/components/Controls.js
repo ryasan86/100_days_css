@@ -1,31 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 
+import { projects, LocalDataContext } from '../provider';
 import StyledControls from '../styles/ControlsStyles';
 import Title from './Title';
 
-const projects = [
-  { title: '001 Title', hash: 'rEgzmB' },
-  { title: '002 Menu Icon', hash: 'agxrqY' },
-  { title: '084 Book Cover', hash: 'vqMOYQ' },
-];
-
 const Controls = props => {
   const [selectedIdx, setSelectedIdx] = useState(0);
+  const { selectedProject, setSelectedProject } = useContext(LocalDataContext);
 
+  // go to previous project
   const goPrev = () => {
     const i = selectedIdx <= 0 ? projects.length - 1 : selectedIdx - 1;
-    setSelectedIdx(i);
-    handleRouteChange(i);
+    handleChange(i);
   };
 
+  // go to next project
   const goNext = () => {
     const i = selectedIdx >= projects.length - 1 ? 0 : selectedIdx + 1;
-    setSelectedIdx(i);
-    handleRouteChange(i);
+    handleChange(i);
   };
 
-  const handleRouteChange = (i) => {
+  // select project change url params
+  const handleChange = i => {
+    setSelectedIdx(i);
+    setSelectedProject(projects[i]);
     props.history.push(`/?day=${i + 1}`);
   };
 
