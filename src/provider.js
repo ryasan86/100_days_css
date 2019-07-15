@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect } from 'react';
+import React, { useState, createContext } from 'react';
 
 const projects = [
   { title: '001 Title', hash: 'rEgzmB' },
@@ -8,10 +8,10 @@ const projects = [
 
 const LocalDataContext = createContext(null);
 
-const LocalDataProvider = ({ children }) => {
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
+const initialProjectState = { project: projects[0] };
 
-  useEffect(() => console.log(selectedProject), [selectedProject]);
+const LocalDataProvider = ({ children }) => {
+  const [selectedProject, setSelectedProject] = useState(initialProjectState);
 
   return (
     <LocalDataContext.Provider value={{ selectedProject, setSelectedProject }}>

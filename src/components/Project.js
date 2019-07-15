@@ -5,7 +5,11 @@ import StyledProject from '../styles/ProjectStyles';
 import Codepen from './Codepen';
 
 const Project = () => {
-  const { selectedProject: { title, hash } } = useContext(LocalDataContext);
+  const {
+    selectedProject: {
+      project: { title, hash },
+    },
+  } = useContext(LocalDataContext);
 
   return (
     <StyledProject>

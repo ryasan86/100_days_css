@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
+import qs from 'query-string';
 
 import { projects, LocalDataContext } from '../provider';
 import StyledControls from '../styles/ControlsStyles';
@@ -7,7 +8,7 @@ import Title from './Title';
 
 const Controls = props => {
   const [selectedIdx, setSelectedIdx] = useState(0);
-  const { selectedProject, setSelectedProject } = useContext(LocalDataContext);
+  const { setSelectedProject } = useContext(LocalDataContext);
 
   // go to previous project
   const goPrev = () => {
@@ -24,9 +25,15 @@ const Controls = props => {
   // select project change url params
   const handleChange = i => {
     setSelectedIdx(i);
-    setSelectedProject(projects[i]);
+    setSelectedProject({ project: projects[i] });
     props.history.push(`/?day=${i + 1}`);
   };
+
+  useEffect(() => {
+    const i = parseInt(qs.parse(props.location.search).day) - 1;
+    if (i >= 0 && i <= projects.length - 1) handleChange(i);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyledControls>
