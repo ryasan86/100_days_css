@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
+import { LocalDataContext } from '../provider';
 import StyledProject from '../styles/ProjectStyles';
 import Codepen from './Codepen';
 
-const Project = () => (
-  <StyledProject>
-    <Codepen hash="agxrqY" title="002 Menu Icon" />
-  </StyledProject>
-);
+const Project = () => {
+  const { selectedProject: { title, hash } } = useContext(LocalDataContext);
+
+  return (
+    <StyledProject>
+      <Codepen hash={hash} title={title} />
+    </StyledProject>
+  );
+};
 
 export default Project;

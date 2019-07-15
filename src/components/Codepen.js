@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Codepen embedded project view
+// codepen embedded project view
 const Codepen = ({ user, hash, height, width, theme, tab, title }) => {
   const src     = `//codepen.io/${user}/embed/${hash}/?height=${height}&theme-id=${theme}&default-tab=${tab}`;
   const userUrl = `http://codepen.io/${user}`;
