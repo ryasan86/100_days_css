@@ -3,6 +3,7 @@ import React, { useState, createContext } from 'react';
 const projects = [
   { title: '001 Title', hash: 'rEgzmB' },
   { title: '002 Menu Icon', hash: 'agxrqY' },
+  { title: '004 Loading', hash: 'zVgXzy' },
   { title: '084 Book Cover', hash: 'vqMOYQ' },
 ];
 
