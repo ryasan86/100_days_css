@@ -15,7 +15,7 @@ const Codepen = ({ user, hash, height, width, theme, tab, title }) => {
       scrolling="no"
       src={src}
       frameBorder="no"
-      style={{ height: height, width: width }}>
+      style={{ height: height, width: width, margin: '7rem 0' }}>
       <a href={pen}>See this pen</a> by {user} (<a href={user}>@{user}</a>) on{' '}
       <a href="http://codepen.io">CodePen</a>.
     </iframe>
@@ -33,8 +33,8 @@ Codepen.propTypes = {
 };
 
 Codepen.defaultProps = {
-  height: '450px',
-  width: '400px',
+  height: '45rem',
+  width: '40rem',
   tab: 'result',
   theme: 'light',
   user: 'ryasan86',

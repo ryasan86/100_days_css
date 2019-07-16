@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import StyledTitle from '../styles/TitleStyles';
 
-const initialState = {
-  opacity: 0,
-  transform: 'translateX(100%)',
-};
-
 const Title = () => {
-  const [animateProps, setAnimateProps] = useState(initialState);
+  const [animateState, setAnimateProps] = useState({
+    opacity: 0,
+    transform: 'translateX(100%)',
+  });
 
-  useEffect(() => setAnimateProps({ opacity: 1, transform: 'translateY(0)' }), []);
+  useEffect(setAnimateProps, []);
 
   return (
-    <StyledTitle animateProps={animateProps}>
+    <StyledTitle animateState={animateState}>
       <div className="numbers-container">
         <div className="number one" />
         <div className="number zero zero-1" />

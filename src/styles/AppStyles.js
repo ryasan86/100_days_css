@@ -4,6 +4,9 @@ const GlobalStylesProvider = createGlobalStyle`
   html {
     box-sizing: border-box;
     font-size: 10px;
+    @media (max-width: 425px) {
+      font-size: 8px;
+    }
   }
 
   *,
@@ -25,6 +28,10 @@ const StyledApp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1000px) {
+    margin-left: 0;
+    flex-direction: column;
+  }
 `;
 
 export { GlobalStylesProvider };

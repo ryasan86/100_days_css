@@ -2,20 +2,18 @@ import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { LocalDataContext } from '../provider';
-import StyledProject from '../styles/ProjectStyles';
-import Codepen from './Codepen';
+import StyledProject from '../styles/ProjectViewStyles';
+import Codepen from '../components/Codepen';
 
 const initialState = {
   opacity: 0,
 };
 
-const Project = () => {
+const ProjectView = () => {
   const [animateProps, setAnimateProps] = useState(initialState);
-  const {
-    selectedProject: { project },
-  } = useContext(LocalDataContext);
+  const { selectedProject: { project } } = useContext(LocalDataContext);
 
-  useEffect(() => setAnimateProps({ opacity: 1, transform: 'translateY(0)' }), []);
+  useEffect(setAnimateProps, []);
 
   return (
     <StyledProject animateProps={animateProps}>
@@ -28,9 +26,9 @@ const Project = () => {
   );
 };
 
-Project.propTypes = {
+ProjectView.propTypes = {
   title: PropTypes.string,
   hash: PropTypes.string,
 };
 
-export default Project;
+export default ProjectView;
