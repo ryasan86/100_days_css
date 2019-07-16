@@ -22,7 +22,6 @@ const App = () => (
       <GlobalStylesProvider />
       <Switch>
         <Route exact path="/" component={AppHOC} />
-        {/* <Route path="/404" component={PageNotFound} /> */}
         <Route component={PageNotFound} />
       </Switch>
     </LocalDataProvider>

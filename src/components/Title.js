@@ -2,7 +2,7 @@ import React from 'react';
 import StyledTitle from '../styles/TitleStyles';
 
 const Title = () => (
-  <StyledTitle>
+  <StyledTitle data-aos="slide-left">
     <div className="numbers-container">
       <div className="number one" />
       <div className="number zero zero-1" />

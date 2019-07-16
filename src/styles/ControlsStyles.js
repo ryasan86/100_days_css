@@ -63,11 +63,11 @@ const squishRight = keyframes`
 `;
 
 const squishLeftCSS = css`
-  animation: ${squishLeft} 0.5s ease-out;
+  animation: ${squishLeft} 0.3s ease-out;
 `;
 
 const squishRightCSS = css`
-  animation: ${squishRight} 0.5s ease-out;
+  animation: ${squishRight} 0.3s ease-out;
 `;
 
 const NavStyles = styled.div`
@@ -82,6 +82,7 @@ const NavStyles = styled.div`
     border: 0;
     outline: 0;
     cursor: pointer;
+    z-index: 10;
 
     .nav-btn__arrow {
       border: solid white;
@@ -102,9 +103,10 @@ const NavStyles = styled.div`
     }
   }
 
-  .project-title {
+  h3 {
     width: 23rem;
     text-align: center;
+    margin: 0;
   }
 `;
 

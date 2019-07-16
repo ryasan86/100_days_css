@@ -11,11 +11,11 @@ const Project = () => {
   } = useContext(LocalDataContext);
 
   return (
-    <StyledProject>
+    <StyledProject data-aos="fade-in">
       {project ? (
         <Codepen hash={project.hash} title={project.title} />
       ) : (
-        <p>Project Not Found</p>
+        <p>Project Not Found ☹</p>
       )}
     </StyledProject>
   );

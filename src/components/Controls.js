@@ -51,21 +51,25 @@ const Controls = ({ history, location }) => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const i = parseInt(params.get('day')) - 1;
-    handleChange(i);
+    handleChange(i ? i : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <StyledControls>
       <Title />
-      <NavStyles {...animateState}>
+      <NavStyles {...animateState} data-aos="slide-right">
         <button
           className="nav-btn prev-btn"
           onClick={goPrev}
           onAnimationEnd={dispatchAnimate}>
           <i className="nav-btn__arrow left" />
         </button>
-        <h3 className="project-title">{selectedProject.project.title}</h3>
+        <h3>
+          {(selectedProject.project && selectedProject.project.title) || (
+            <span>☹</span>
+          )}
+        </h3>
         <button
           className="nav-btn next-btn"
           onClick={goNext}
@@ -73,7 +77,7 @@ const Controls = ({ history, location }) => {
           <i className="nav-btn__arrow right" />
         </button>
       </NavStyles>
-      <div className="description-container">
+      <div className="description-container" data-aos="slide-up">
         <p>
           A a collection of 100 builds over the course of 100 days to strengthen
           CSS layout, transition, and animation skills.
