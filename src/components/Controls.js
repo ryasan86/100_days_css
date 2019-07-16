@@ -6,16 +6,33 @@ import { projects, LocalDataContext } from '../provider';
 import StyledControls, { NavStyles } from '../styles/ControlsStyles';
 import Title from './Title';
 
-const initialState = { left: false, right: false };
+const initialState = {
+  left: false,
+  right: false,
+  nav: {
+    opacity: 0,
+    transform: 'translateX(-100%)',
+  },
+  description: {
+    opacity: 0,
+    transform: 'translateY(100%)',
+  },
+};
 
 const animationReducer = (state, action) => {
   switch (action) {
     case 'left':
-      return { left: true, right: false };
+      return { ...state, left: true, right: false };
     case 'right':
-      return { left: false, right: true };
+      return { ...state, left: false, right: true };
+    case 'enter':
+      return {
+        ...state,
+        nav: { opacity: 1, transform: 'translateX(0)' },
+        description: { opacity: 1, transform: 'translateY(0)' },
+      };
     default:
-      return initialState;
+      return { ...state, left: false, right: false };
   }
 };
 
@@ -52,13 +69,14 @@ const Controls = ({ history, location }) => {
     const params = new URLSearchParams(location.search);
     const i = parseInt(params.get('day')) - 1;
     handleChange(i ? i : 0);
+    dispatchAnimate('enter');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <StyledControls>
+    <StyledControls {...animateState}>
       <Title />
-      <NavStyles {...animateState} data-aos="slide-right">
+      <NavStyles {...animateState}>
         <button
           className="nav-btn prev-btn"
           onClick={goPrev}
@@ -77,7 +95,7 @@ const Controls = ({ history, location }) => {
           <i className="nav-btn__arrow right" />
         </button>
       </NavStyles>
-      <div className="description-container" data-aos="slide-up">
+      <div className="description-container">
         <p>
           A a collection of 100 builds over the course of 100 days to strengthen
           CSS layout, transition, and animation skills.

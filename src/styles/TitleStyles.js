@@ -4,6 +4,8 @@ const StyledTitle = styled.div`
   color: white;
   position: relative;
   display: flex;
+  transition: all 0.8s ease;
+  ${props => props.animateProps};
 
   .numbers-container {
     display: flex;

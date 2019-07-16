@@ -35,6 +35,8 @@ const StyledControls = styled.div`
 
   .description-container {
     max-width: 350px;
+    transition: all 0.8s ease;
+    ${props => props.description};
   }
 `;
 
@@ -75,6 +77,8 @@ const NavStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.8s ease;
+  ${props => props.nav};
 
   .nav-btn {
     margin: 0;

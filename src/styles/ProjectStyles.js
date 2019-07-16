@@ -7,6 +7,8 @@ const StyledProject = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: all 0.8s ease 0.8s;
+  ${props => props.animateProps};
 
   p {
     color: #075a97;
