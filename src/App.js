@@ -6,11 +6,13 @@ import StyledApp, { GlobalStylesProvider } from './styles/AppStyles';
 import ProjectView from './views/ProjectView';
 import ControlsView from './views/ControlsView';
 import PageNotFound from './components/404';
+import GithubLink from './components/GithubIcon';
 
 const basename = process.env.NODE_ENV === 'development' ? '/' : '/100_days_css';
 
 const AppHOC = () => (
   <StyledApp>
+    <GithubLink />
     <ProjectView />
     <ControlsView />
   </StyledApp>

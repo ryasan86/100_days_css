@@ -28,6 +28,8 @@ const StyledApp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+
   @media (max-width: 1000px) {
     margin-left: 0;
     flex-direction: column;
