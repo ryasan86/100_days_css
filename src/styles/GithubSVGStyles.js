@@ -16,10 +16,29 @@ const octocatWave = keyframes`
 `;
 
 const StyledGithubSVG = styled.svg`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  fill: #075a97;
+  cursor: pointer;
+
+  path {
+    &:first-child {
+      fill: #fff;
+    }
+    &:nth-child(2) {
+      -webkit-transform-origin: 130px 106px;
+      transform-origin: 130px 106px;
+    }
+  }
+
   @media (max-width: 1000px) {
-    fill: #fff;
-    & > path:first-of-type {
-      fill: #075a97;
+    path {
+      fill: #fff;
+      &:first-child {
+        fill: #075a97;
+      }
     }
   }
 
