@@ -4,6 +4,7 @@ const projects = [
   { title: '001 Title', hash: 'rEgzmB' },
   { title: '002 Menu Icon', hash: 'agxrqY' },
   { title: '004 Loading', hash: 'zVgXzy' },
+  { title: '006 Profile', hash: 'pMzMOa' },
   { title: '084 Book Cover', hash: 'vqMOYQ' },
 ];
 
